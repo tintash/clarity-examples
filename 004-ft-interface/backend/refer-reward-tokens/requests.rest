@@ -1,0 +1,31 @@
+
+get http://localhost:3000/contractAPI/tokenName
+
+###
+get http://localhost:3000/contractAPI/tokenURI
+
+###
+get http://localhost:3000/contractAPI/tokenSupply
+
+###
+get http://localhost:3000/contractAPI/tokenDecimals
+
+###
+get http://localhost:3000/contractAPI/tokenSymbol
+
+###
+POST http://localhost:3000/contractAPI/setMnemonic HTTP/1.1
+Content-Type: application/json
+
+{
+    "mnemonic": "dinner begin come food group skull bounce need spray axis style identify major remember above extra wasp any bid youth slice erode champion trouble"
+}
+
+###
+get http://localhost:3000/referUser
+    ?useremail=test@domain.com
+    &useraddress=ST5HYHBZ6CH0DHENSVCRTGKJ0CGTDFN09DRT38YK
+#     &useraddress=ST2V7C1FR46HSV42S5XCZNJ80XE513E9526DGSC6E
+
+###
+get http://localhost:3000/completeTransaction
