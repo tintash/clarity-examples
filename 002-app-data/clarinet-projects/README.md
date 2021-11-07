@@ -7,16 +7,16 @@ Data contract has a bug which can be exploited by sellers. We will deploy a seco
 ### Files  
 
 - **contracts/escrow-traits.clar** 
-  - defines traits for app and data contracts   
+    - defines traits for app and data contracts   
 - **contracts/escrow-data.clar**
-  - escrow data contract which implements escrow-traits
+    - escrow data contract which implements escrow-traits
 - **contracts/escrow-app.clar**
-  - escrow app contract which uses traits to call data contract
+    - escrow app contract which uses traits to call data contract
 - **contract/escrow-app-v2.clar**
-  - upgraded app contract that fixes bugs before calling data contract
+    - upgraded app contract that fixes bugs before calling data contract
 - **tests/escrow-data_tests.ts**
-  - contains test cases
-  - shows how to disable calls from first app contract after v2 is deployed 
+    - contains test cases
+    - shows how to disable calls from first app contract after v2 is deployed 
 
 ### Flow 
 
@@ -40,4 +40,5 @@ Although escrow-data completely complies escrow-traits but its internal implemen
 escrow-data contract deployer can also disable calls to escrow-app by removing it from authorized callers list. 
 
 *Flow of a call is described as following*
+
 ![Sequence Diagram](diagrams/appdata.png)
