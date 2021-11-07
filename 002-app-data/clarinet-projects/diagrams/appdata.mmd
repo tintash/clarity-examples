@@ -1,0 +1,35 @@
+sequenceDiagram
+  participant seller
+  participant escrow_app
+  participant escrow_app_v2
+  participant escrow_data
+  participant escrow_data_deployer
+  participant escrow_traits
+  
+  %%autonumber
+  escrow_data ->> escrow_traits: implements traits 
+  escrow_data_deployer ->> escrow_data: 1. add_caller(escrow_app)
+  escrow_data_deployer ->> escrow_data: 2. add_caller(escrow_app_v2)
+  escrow_data_deployer ->> escrow_data: 3. remove_caller(escrow_app)
+
+  seller ->> escrow_app: seller_deposit(100)
+  escrow_app -->>+ escrow_data: seller_deposit(100)
+  escrow_data -->> escrow_data: verify_caller() 
+  note left of escrow_data: Should fail, contract principal removed (step 3)
+  alt contract principal is verified
+  escrow_app ->> seller: ok: transaction complete
+  else contract principal is not verified
+  escrow_data -->>- escrow_app: err: invalid caller
+  escrow_app ->> seller: err: invalid caller
+  end
+
+  
+  seller ->> escrow_app_v2: seller_deposit(100)
+  escrow_app_v2 -->>+ escrow_data: seller_deposit(100)
+  escrow_data -->> escrow_data: verify_caller()
+  note left of escrow_data: Should pass, contract principal added (step 2) 
+  alt contract principal is verified
+  escrow_data -->>- escrow_app_v2: ok: transaction complete 
+  else contract principal is not verified
+  escrow_app_v2 ->> seller: ok: transaction complete  
+  end
