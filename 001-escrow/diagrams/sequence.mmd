@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant Buyer
+  participant Contract
+  participant Seller
+  Buyer -->> Seller: Negotiate purchase, send shipping address
+  Seller ->> Contract: Transfer 20 STX
+  Buyer ->> Contract: Transfer 20 STX
+  Seller -->> Buyer: Ship item to buyer
+  Buyer ->> Contract: call the itemReceived() function
+  activate Contract
+  Contract ->> Buyer: Transfer 10 STX
+  Contract ->> Seller: Transfer 30 STX
+  deactivate Contract
