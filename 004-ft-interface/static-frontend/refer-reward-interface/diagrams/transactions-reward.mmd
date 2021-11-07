@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant Referrer
+  participant User
+  participant refer_reward_ft
+
+  User ->> refer_reward_ft: complete a transaction
+  refer_reward_ft --) refer_reward_ft: verify number of transactions
+  rect rgba(0, 127, 127, .1)
+    alt transactions == required number of transactions 
+      refer_reward_ft --) Referrer: create and send tokens to Referrer 
+      note left of refer_reward_ft: contract removes Referrer from User info 
+    end
+  end
+  refer_reward_ft ->> User: ok, transaction recorded
