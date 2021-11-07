@@ -1,0 +1,18 @@
+[project]
+name = "velocity-nft"
+requirements = []
+[contracts.nft-trait]
+path = "contracts/nft-trait.clar"
+depends_on = []
+
+[contracts.string-conversion]
+path = "contracts/string-conversion.clar"
+depends_on = []
+
+[contracts.velocity]
+path = "contracts/velocity.clar"
+depends_on = ["nft-trait", "string-conversion"]
+
+[contracts.velocity-market]
+path = "contracts/velocity-market.clar"
+depends_on = []

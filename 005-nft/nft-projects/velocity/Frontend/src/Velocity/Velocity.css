@@ -1,0 +1,15 @@
+.submit-button {
+  background-color: #634caf; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.token-id-list {
+  text-align: center;
+  list-style-position: inside;
+}
