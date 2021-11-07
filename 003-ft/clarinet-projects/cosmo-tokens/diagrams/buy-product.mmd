@@ -1,0 +1,22 @@
+sequenceDiagram
+  participant User 
+  participant Product Store 
+  participant Cosmo FT
+
+  User ->> Product Store: buy-product (name (string-ascii 50))
+  activate  Product Store
+  Product Store ->> Product Store: decrement-quantity(product-name)
+  Product Store ->> Cosmo FT: issue-token(tokens, recipient)
+  activate Cosmo FT
+  alt is contract paused
+  Cosmo FT ->> Product Store: returns the error
+  else
+   alt (is valid contract-caller) || (tx-sender == contract-owner)
+   Cosmo FT ->> Product Store: returns the result
+   else
+   Cosmo FT ->> Product Store: returns the unauthorized caller error
+   end
+  end
+  deactivate Cosmo FT
+  Product Store ->> User: returns the result obtained from Cosmo FT
+  deactivate Product Store

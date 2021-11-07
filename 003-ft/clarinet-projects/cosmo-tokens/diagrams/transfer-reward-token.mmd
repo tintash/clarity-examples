@@ -1,0 +1,21 @@
+sequenceDiagram
+  participant User 
+  participant Product Store 
+  participant Cosmo FT
+  
+  User ->> Product Store: transfer-reward-tokens(amount, recipient)
+  activate  Product Store
+  Product Store ->> Cosmo FT: transfer(amount, sender, recipient)
+  activate Cosmo FT
+  alt is contract paused
+  Cosmo FT ->> Product Store: returns the error
+  else
+   alt tx-sender == sender
+   Cosmo FT ->> Product Store: returns the result
+   else
+   Cosmo FT ->> Product Store: returns the unauthorized caller error
+   end
+  end
+  deactivate Cosmo FT
+  Product Store ->> User: returns the result obtained from Cosmo FT
+  deactivate Product Store

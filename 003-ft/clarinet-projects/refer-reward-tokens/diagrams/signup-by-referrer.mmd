@@ -1,0 +1,9 @@
+
+sequenceDiagram
+    participant Referrer
+    participant refer_reward_ft
+    participant User
+
+    Referrer ->> refer_reward_ft: refers new user (email & address)
+    refer_reward_ft -->> Referrer: ok, saves Referrer & user info
+    note over refer_reward_ft, User: App sends invite link over email

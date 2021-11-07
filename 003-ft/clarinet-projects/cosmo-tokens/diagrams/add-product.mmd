@@ -1,0 +1,21 @@
+sequenceDiagram
+  participant User 
+  participant Product Store 
+
+  User ->> Product Store: add-product(name, price, quantity)
+  activate  Product Store
+  alt is user == contract-owner
+   alt is price > 0 
+    alt is quantity > 0 
+     Product Store -->> Product Store : add product in inventory
+     Product Store ->> User: return success
+    else
+    Product Store ->> User: return invalid quantity error
+    end
+   else
+   Product Store ->> User: return invalid price error
+   end
+  else
+  Product Store ->> User: return unauthorized caller error
+  end
+  deactivate Product Store
