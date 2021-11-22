@@ -10,4 +10,4 @@ Game has `gold, elixir & dark-elixir` currencies. Players can either buy these o
 
 #### Copyrights
 
-I used to play [Clash of Clans](https://supercell.com/en/games/clashofclans/) a lot. Its balanced economy and gameplay are really good. Code in this contract is loosely. But this is just for learning and no copyright violation is intended.
+I used to play [Clash of Clans](https://supercell.com/en/games/clashofclans/) a lot. Its balanced economy and gameplay are really good. Code in this contract is loosely based on same concept. But this is just for learning and no copyright violation is intended.
