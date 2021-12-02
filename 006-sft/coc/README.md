@@ -12,7 +12,7 @@ Clash of Clans is an online multiplayer game in which players form communities c
 
 A defense building e.g. `cannon` can be upgraded from `level 1 to 20`. Upgrade is done by spending `Gold`. Following table gives an overview of first 10 upgrades for `cannon`.
 
-![cannon](../images/cannon.png)
+![cannon](images/cannon.png)
 
 So from above table, upgrading cannon from level 5 to level 6 will cost 100,000 gold.
 
