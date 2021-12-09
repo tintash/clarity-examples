@@ -4,7 +4,7 @@ requirements = []
 costs_version = 1
 [contracts.coc]
 path = "contracts/coc.clar"
-depends_on = ["semi-fungible-token"]
+depends_on = ["sipxxx-semi-fungible-token-trait"]
 
 [contracts.semi-fungible-token]
 path = "contracts/semi-fungible-token.clar"

@@ -104,7 +104,7 @@ Clarinet.test({
       ),
 
       Tx.contractCall(
-        "semi-fungible-token",
+        "coc",
         "get-balance",
         [types.uint(token_id), types.principal(player.address)],
         deployer.address
@@ -121,9 +121,9 @@ Clarinet.test({
     let deployer = accounts.get("deployer")!;
     let player = accounts.get("wallet_1")!;
     let amount = 5000;
-    let token_id_1 = 0;
-    let token_id_2 = 1;
-    let townhall = 0;
+    let gold = 0;
+    let elixir = 1;
+    let townhall = 10;
     let block = chain.mineBlock([
       // add player
       Tx.contractCall(
@@ -136,11 +136,7 @@ Clarinet.test({
       Tx.contractCall(
         "coc",
         "send-tokens",
-        [
-          types.uint(token_id_1),
-          types.uint(amount),
-          types.principal(player.address),
-        ],
+        [types.uint(gold), types.uint(amount), types.principal(player.address)],
         deployer.address
       ),
       // send token 2 (elixir)
@@ -148,7 +144,7 @@ Clarinet.test({
         "coc",
         "send-tokens",
         [
-          types.uint(token_id_2),
+          types.uint(elixir),
           types.uint(amount),
           types.principal(player.address),
         ],
