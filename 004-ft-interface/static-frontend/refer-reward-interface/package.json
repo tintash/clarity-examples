@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.7.1",
     "@stacks/blockchain-api-client": "^0.68.0",
     "@stacks/connect-react": "^13.0.0",
     "@stacks/ui": "^7.10.0",

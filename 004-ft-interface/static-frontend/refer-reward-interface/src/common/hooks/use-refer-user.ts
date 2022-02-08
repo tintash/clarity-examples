@@ -64,12 +64,12 @@ export function useReferUserButton() {
   const onCancel = useCallback(() => {
     toast.error("Cancelled!");
     void setIsLoading(false);
-  }, [toast, setIsLoading]);
+  }, [setIsLoading]);
 
   const onFinish = useCallback(() => {
     toast.success("Transaction sent!");
     void setIsLoading(false);
-  }, [toast, setIsLoading]);
+  }, [setIsLoading]);
 
   return useCallback(
     (userAddress: string, email: string) => {
@@ -111,12 +111,13 @@ export function useReferUserButton() {
         contractName,
         functionName: RR_REFER_USER,
         functionArgs: [stringAsciiCV(email), principalCV(userAddress || "")],
+        onFinish,
         onCancel,
         network,
         stxAddress: address,
       });
     },
-    [network, onFinish, onCancel, address, doContractCall]
+    [network, onFinish, onCancel, address, doContractCall, contractAddress, contractName, setIsLoading]
   );
 }
 
@@ -131,12 +132,12 @@ export function usePerformTransaction() {
   const onCancel = useCallback(() => {
     toast.error("Cancelled!");
     void setIsLoading(false);
-  }, [toast, setIsLoading]);
+  }, [setIsLoading]);
 
   const onFinish = useCallback(() => {
     toast.success("Transaction sent!");
     void setIsLoading(false);
-  }, [toast, setIsLoading]);
+  }, [setIsLoading]);
 
   return useCallback(() => {
     void setIsLoading(true);
@@ -146,9 +147,10 @@ export function usePerformTransaction() {
       contractName,
       functionName: RR_PERFORM_TRANSACTION,
       functionArgs: [],
+      onFinish,
       onCancel,
       network,
       stxAddress: address,
     });
-  }, [network, onFinish, onCancel, address, doContractCall]);
+  }, [network, onFinish, onCancel, address, doContractCall, contractAddress, contractName, setIsLoading]);
 }
