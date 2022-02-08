@@ -58,7 +58,7 @@ Clarinet.test({
         let eUser = accounts.get('wallet_2')!;
         let block = chain.mineBlock([
             Tx.contractCall ('refer-reward-ft', 'signup-by-referrer', 
-                [types.ascii('email@domain.com'), types.principal(eUser.address)],
+                [types.principal(eUser.address)],
                 eReferrer.address
             ),
         ]);
@@ -72,7 +72,7 @@ Clarinet.test({
         let eUser = accounts.get('wallet_2')!;
         let block = chain.mineBlock([
             Tx.contractCall ('refer-reward-ft', 'signup-by-referrer', 
-                [types.ascii('email@domain.com'), types.principal(eUser.address)],
+                [types.principal(eUser.address)],
                 eUser.address
             ),
         ]);
@@ -81,7 +81,7 @@ Clarinet.test({
 });
 
 Clarinet.test({
-    name: "user-mgmt -- reward is sent to referrer after new user makes transacton",
+    name: "user-mgmt -- reward is sent to referrer after new user makes transaction",
     async fn(chain: Chain, accounts: Map<string, Account>) {
         let deployer = accounts.get('deployer')!;
         let eReferrer = accounts.get('wallet_1')!;
@@ -94,7 +94,7 @@ Clarinet.test({
         
         let block = chain.mineBlock([
             Tx.contractCall ('refer-reward-ft', 'signup-by-referrer', 
-                [types.ascii('email@domain.com'), types.principal(eUser.address)],
+                [types.principal(eUser.address)],
                 eReferrer.address
             ),
             Tx.contractCall ('refer-reward-ft', 'complete-transaction', 
@@ -112,7 +112,7 @@ Clarinet.test({
 });
 
 Clarinet.test({
-    name: "user-mgmt -- unregistered user cannot make transacton",
+    name: "user-mgmt -- unregistered user cannot make transaction",
     async fn(chain: Chain, accounts: Map<string, Account>) {
         let eUser = accounts.get('wallet_2')!;
         

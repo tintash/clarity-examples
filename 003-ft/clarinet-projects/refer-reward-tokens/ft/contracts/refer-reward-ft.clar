@@ -1,6 +1,5 @@
 ;; refer-reward-ft
-;; this contract will offer token rewards to referrer 
-;; tokens are defined using SIP-10 
+;; this contract will offer SIP10 token rewards to referrer 
 (impl-trait .ft-trait.ft-trait)
 
 ;; constants
@@ -15,9 +14,6 @@
 
 ;; data maps and vars
 (define-fungible-token refer-reward)
-;; registered user info map 
-(define-map users 
-    principal { email: (string-ascii 200) })
 ;; user's referrer map 
 (define-map user-referrer
     principal { referrer: principal })
@@ -69,12 +65,10 @@
 )
 
 ;; signup by referrer
-(define-public (signup-by-referrer (email (string-ascii 200)) (user principal))
+(define-public (signup-by-referrer (user principal))
     (begin
         ;; !self refer  
         (asserts! (not (is-eq tx-sender user)) err-invalid-call)
-        (asserts! (map-insert users user 
-            {email: email}) err-invalid-call)
         (map-set user-referrer user { referrer: tx-sender })
         (map-set user-transactions user { transactions: u0 })
         (ok true)

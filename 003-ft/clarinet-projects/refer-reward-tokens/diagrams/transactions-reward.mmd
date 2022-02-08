@@ -3,10 +3,11 @@ sequenceDiagram
   participant User
   participant refer_reward_ft
 
-  User ->> refer_reward_ft: complete a transaction
+  User ->> refer_reward_ft: performs a transaction
+  refer_reward_ft --) refer_reward_ft: check if user was referred 
   refer_reward_ft --) refer_reward_ft: verify number of transactions
   rect rgba(0, 127, 127, .1)
-    alt transactions == required number of transactions 
+    alt referrer exists && transactions == required number of transactions 
       refer_reward_ft --) Referrer: create and send tokens to Referrer 
       note left of refer_reward_ft: contract removes Referrer from User info 
     end

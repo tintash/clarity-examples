@@ -1,6 +1,7 @@
 [project]
 name = "ft"
 requirements = []
+analysis = ["check_checker"]
 [contracts.ft-trait]
 path = "contracts/ft-trait.clar"
 depends_on = []
