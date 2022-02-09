@@ -1,6 +1,6 @@
 ## Fungible tokens example
 
-This example implements SIP10 fungible token trait to create referral rewards system. These reward tokens are transferred to referrers after new users signup and perform certain number of transactions.
+This example implements SIP10 fungible token trait to create referral rewards system. These reward tokens are transferred to referrers after new users complete sign-up process and perform certain number of transactions.
 
 Example contains a contract and a SIP-10 FT trait.
 
@@ -10,7 +10,7 @@ Example contains a contract and a SIP-10 FT trait.
     * defines traits for fungible tokens
 - **contracts/refer-reward-ft.clar**
     * implements ft-traits for refer-reward tokens
-    * offers functions like refer, signup, complete-transactions
+    * offers functions like signup-by-referrer, complete-transactions
 - **tests/\*.ts**
     * contains test cases
 
@@ -19,11 +19,17 @@ Example contains a contract and a SIP-10 FT trait.
 | Contract        | Address                                                        |
 | :-------------- | :------------------------------------------------------------- |
 | ft-trait        | `ST2V7C1FR46HSV42S5XCZNJ80XE513E9526DGSC6E.ft-trait`           |
-| refer-reward-ft | `ST2V7C1FR46HSV42S5XCZNJ80XE513E9526DGSC6E.refer-reward-ft-v4` |
+| refer-reward-ft | `ST2V7C1FR46HSV42S5XCZNJ80XE513E9526DGSC6E.refer-reward-ft-v6` |
 
 ### Flow
 
-Existing users invite new users to system by registering user's address and email. Contract will save referrer's address and app (_using this contract_) will send an invite email to new user. New users can also self register without mentioning referrer. After registration, users can perform transactions. Reward is only offered to referrer, if new user makes certain number of transactions. Details of transactions are out of scope of this example. Currently transaction number is set to 1, for simplicity. Contract automatically sends reward tokens to referrer and removes it from user's stored info.
+Existing users invite new users to system by registering their principal and email. The principal is saved on chain, while email is stored in app only. _[`signup-by-referrer`]_
+
+Contract keeps one map of users to referrer principals and another for number of transactions performed by a user. _[`user-referrer`, `user-transactions`]_
+
+After registration, users can perform transactions on app. Reward is only offered to referrer, if new user makes certain number of transactions. Details of transactions are out of scope of this example. Currently transaction number is set to 1. 
+
+The app can check if the user has a referrer or not and then can call the function to automatically send the reward to referrer after the required number of transactions are performed by new user. _[`get-referrer`, `get-num-transactions`, `complete-transaction`]_ 
 
 **_User registration by referrer_**
 
