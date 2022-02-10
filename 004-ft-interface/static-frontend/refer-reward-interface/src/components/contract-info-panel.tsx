@@ -44,7 +44,7 @@ const SignedInView: React.FC<StackProps> = ({ ...props }) => {
         Token decimal places: <code>{decimals}</code>
       </Text>
       <Text fontWeight={500}>
-        Token total supply: <code>{total}</code>
+        Token total supply: <code>{total}</code> 
       </Text>
       <Text fontWeight={500}>
         Token uri: <code>{uri}</code>
@@ -70,7 +70,7 @@ export const ContractInfoPanel: React.FC = memo(() => {
         </Title>
         <Caption textAlign="center">
           Read only function calls to get token details from contract deployed
-          on tesnet
+          on testnet
         </Caption>
       </Stack>
 

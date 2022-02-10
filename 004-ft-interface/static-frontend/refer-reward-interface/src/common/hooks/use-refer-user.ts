@@ -110,7 +110,7 @@ export function useReferUserButton() {
         contractAddress,
         contractName,
         functionName: RR_REFER_USER,
-        functionArgs: [stringAsciiCV(email), principalCV(userAddress || "")],
+        functionArgs: [principalCV(userAddress || "")],
         onFinish,
         onCancel,
         network,
