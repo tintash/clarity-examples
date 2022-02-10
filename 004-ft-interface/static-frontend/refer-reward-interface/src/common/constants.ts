@@ -1,5 +1,5 @@
 export const REFER_REWARD_CONTRACT =
-  "ST2V7C1FR46HSV42S5XCZNJ80XE513E9526DGSC6E.refer-reward-ft-v5";
+  "ST2V7C1FR46HSV42S5XCZNJ80XE513E9526DGSC6E.refer-reward-ft-v6";
 export const RR_TOKEN_NAME = "get-name";
 export const RR_TOKEN_SYMBOL = "get-symbol";
 export const RR_TOKEN_DECIMALS = "get-decimals";
